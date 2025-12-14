@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>给妈妈的生日祝福</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Arial Rounded MT Bold", "微软雅黑", sans-serif;
+        }
+        body {
+            background-color: #FFF8E6;
+            color: #6D4C41;
+            min-height: 100vh;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* 新增：飞行的燕子动画 */
+        .flying-swallow {
+            position: absolute;
+            top: 5%;
+            color: #8D6E63; /* 暖棕色燕子，协调整体色调 */
+            font-size: 24px;
+            opacity: 0.8;
+            z-index: 1;
+            pointer-events: none;
+            animation: fly 15s linear infinite;
+        }
+        /* 不同燕子的飞行路径和延迟 */
+        .swallow1 { animation-delay: 0s; left: -100px; }
+        .swallow2 { animation-delay: 5s; left: -100px; top: 8%; }
+        .swallow3 { animation-delay: 8s; left: -100px; top: 3%; }
+        @keyframes fly {
+            0% { transform: translateX(-100px) scale(0.8); opacity: 0; }
+            10% { opacity: 0.8; }
+            90% { opacity: 0.8; }
+            100% { transform: translateX(calc(100vw + 100px)) scale(0.8); opacity: 0; }
+        }
+
+        /* 装饰元素：保留原有并增加燕子装饰 */
+        .balloon {
+            position: absolute;
+            width: 40px;
+            height: 50px;
+            border-radius: 50% 50% 30% 30%;
+            z-index: 1;
+        }
+        .balloon::after {
+            content: '';
+            position: absolute;
+            width: 2px;
+            height: 30px;
+            background-color: rgba(0,0,0,0.2);
+            bottom: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .balloon1 {
+            top: 10%;
+            left: 5%;
+            background-color: #FFE6EA;
+            transform: rotate(-10deg);
+        }
+        .balloon2 {
+            top: 15%;
+            right: 8%;
+            background-color: #FFE0B2;
+            transform: rotate(5deg);
+        }
+
+        .gift {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            z-index: 1;
+        }
+        .gift::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 6px;
+            background-color: rgba(255,107,139,0.7);
+            top: 12px;
+        }
+        .gift::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            height: 100%;
+            background-color: rgba(255,107,139,0.7);
+            left: 12px;
+        }
+        .gift1 {
+            bottom: 15%;
+            left: 10%;
+            background-color: #E8F5E9;
+        }
+        .gift2 {
+            bottom: 10%;
+            right: 12%;
+            background-color: #E3F2FD;
+        }
+
+        .cake {
+            position: absolute;
+            width: 35px;
+            height: 30px;
+            z-index: 1;
+        }
+        .cake-base {
+            position: absolute;
+            width: 100%;
+            height: 15px;
+            background-color: #FFE0B2;
+            bottom: 0;
+            border-radius: 3px;
+        }
+        .cake-top {
+            position: absolute;
+            width: 80%;
+            height: 12px;
+            background-color: #FFE6EA;
+            top: 3px;
+            left: 10%;
+            border-radius: 3px;
+        }
+        .cake-candle {
+            position: absolute;
+            width: 3px;
+            height: 8px;
+            background-color: #FFCDD2;
+            top: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .cake-flame {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background-color: #FFD700;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 50%;
+        }
+        .cake1 {
+            top: 25%;
+            right: 15%;
+        }
+
+        /* 新增：静态燕子装饰 */
+        .swallow-decoration {
+            position: absolute;
+            color: #8D6E63;
+            opacity: 0.6;
+            z-index: 1;
+        }
+        .swallow-deco1 {
+            top: 30%;
+            left: 7%;
+            transform: rotate(10deg);
+        }
+        .swallow-deco2 {
+            bottom: 25%;
+            right: 9%;
+            transform: rotate(-5deg);
+        }
+
+        .bone {
+            position: absolute;
+            color: #F5F5F5;
+            text-shadow: 0 1px 1px rgba(0,0,0,0.1);
+            opacity: 0.7;
+            z-index: 1;
+        }
+        .bone1 {
+            top: 40%;
+            left: 8%;
+            transform: rotate(15deg);
+        }
+        .bone2 {
+            bottom: 30%;
+            right: 5%;
+            transform: rotate(-10deg);
+        }
+
+        .wave {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 50px;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%23FFE6EA' fill-opacity='0.3' d='M0,128L48,144C96,160,192,192,288,197.3C384,203,480,181,576,181.3C672,181,768,203,864,197.3C960,192,1056,160,1152,138.7C1248,117,1344,107,1392,101.3L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E");
+            background-size: cover;
+            z-index: 1;
+        }
+
+        /* 浮动爱心 */
+        .floating-heart {
+            position: absolute;
+            color: #FF80AB;
+            opacity: 1;
+            z-index: 5;
+            pointer-events: none;
+            animation: float 3s ease-in-out forwards;
+        }
+        @keyframes float {
+            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(-100px) rotate(30deg); opacity: 0; }
+        }
+
+        /* 标题：简洁庄重 */
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            color: #FFB74D;
+            text-shadow: 1px 1px 2px rgba(109, 76, 65, 0.1);
+            z-index: 2;
+        }
+
+        /* 卡片 */
+        .card {
+            background-color: white;
+            padding: 40px 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(109, 76, 65, 0.08);
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* 母亲卡通图片容器 */
+        .mom-image-container {
+            position: relative;
+            width: 180px;
+            height: 180px;
+            margin: 0 auto 20px;
+            cursor: pointer;
+        }
+
+        .mom-image {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            box-shadow: 0 3px 10px rgba(109, 76, 65, 0.1);
+            border: 4px solid #FFE0B2;
+            transition: all 0.3s ease;
+        }
+
+        .shiba-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            box-shadow: 0 3px 10px rgba(109, 76, 65, 0.1);
+            border: 4px solid #FFE6EA;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.5s ease;
+            z-index: 3;
+        }
+        .mom-image-container.active .shiba-image {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .mom-image-container.active .mom-image {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        /* 柴犬祝福卡片：语气调整 */
+        .shiba-bless {
+            position: absolute;
+            bottom: -120px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 3px 15px rgba(109, 76, 65, 0.15);
+            width: 220px;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.5s ease;
+            z-index: 4;
+        }
+        .mom-image-container.active .shiba-bless {
+            opacity: 1;
+            pointer-events: auto;
+            bottom: -110px;
+        }
+
+        /* 按钮 */
+        .bless-btn {
+            background-color: #FFCDD2;
+            color: #6D4C41;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 30px;
+            font-size: 1rem;
+            cursor: pointer;
+            margin: 20px 0;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 5px rgba(255, 107, 139, 0.15);
+        }
+        .bless-btn:hover {
+            background-color: #FFB7C5;
+            transform: scale(1.05);
+        }
+
+        /* 文字内容：去除肉麻感和"呀" */
+        .message {
+            line-height: 1.8;
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+        }
+        .date {
+            color: #8D6E63;
+            font-style: italic;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+
+        .paw {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            opacity: 0.5;
+        }
+        .paw1 {
+            top: 20px;
+            left: 20px;
+            transform: rotate(10deg);
+        }
+        .paw2 {
+            bottom: 20px;
+            right: 20px;
+            transform: rotate(-10deg);
+        }
+
+        /* 弹窗：增加燕子元素，语气调整 */
+        .bless-popup {
+            position: absolute;
+            padding: 10px 16px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(109, 76, 65, 0.12);
+            font-size: 0.9rem;
+            opacity: 0;
+            transform: translateY(15px);
+            transition: all 0.4s ease;
+            z-index: 10;
+            max-width: 180px;
+        }
+        .bless-popup.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2rem;
+            }
+            .shiba-bless {
+                width: 180px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 飞行的燕子（页面加载时从左到右飞过） -->
+    <div class="flying-swallow swallow1">🐦</div>
+    <div class="flying-swallow swallow2">🐦</div>
+    <div class="flying-swallow swallow3">🐦</div>
+
+    <!-- 静态燕子装饰 -->
+    <div class="swallow-decoration swallow-deco1">🐦</div>
+    <div class="swallow-decoration swallow-deco2">🐦</div>
+
+    <!-- 原有装饰元素 -->
+    <div class="balloon balloon1"></div>
+    <div class="balloon balloon2"></div>
+    <div class="gift gift1"></div>
+    <div class="gift gift2"></div>
+    <div class="cake cake1">
+        <div class="cake-base"></div>
+        <div class="cake-top"></div>
+        <div class="cake-candle"></div>
+        <div class="cake-flame"></div>
+    </div>
+    <div class="bone bone1">🦴</div>
+    <div class="bone bone2">🦴</div>
+    <div class="wave"></div>
+
+    <!-- 标题：去除"燕子" -->
+    <h1>妈妈，生日快乐</h1>
+    
+    <div class="card">
+        <div class="mom-image-container" id="mom-container">
+            <img src="images/母亲卡通.webp" alt="妈妈" class="mom-image">
+            <img src="images/shiba.png" alt="壮壮" class="shiba-image">
+            <!-- 柴犬祝福：调整语气 -->
+            <div class="shiba-bless">
+                <p>妈妈生日快乐🐾<br>我是壮壮，阳阳让我告诉您：我们都很爱您</p>
+            </div>
+        </div>
+
+        <button class="bless-btn">点击获取生日祝福 ✨</button>
+
+        <!-- 正文：去除肉麻感和"呀" -->
+        <div class="message">
+            <p>亲爱的妈妈，又一年了</p>
+            <p>虽然平时不常说，但心里一直觉得</p>
+            <p>有您在，家就永远是最暖的地方</p>
+            <p>阳阳和壮壮一起，祝您每天都开心自由</p>
+        </div>
+
+        <div class="date">
+            1981.12.15 — 永远的超人妈妈顾燕
+        </div>
+
+        <div class="paw paw1">🐾</div>
+        <div class="paw paw2">🐾</div>
+    </div>
+
+    <div id="popup-container"></div>
+    <div id="hearts-container"></div>
+
+    <script>
+        // 祝福语：去除"呀"，语气平实
+        const blessings = [
+            "妈妈做的菜永远是世界上最好吃的🐾",
+            "希望妈妈新的一年少点操心，多点自己的时间",
+            "阳阳遇到困难想到妈妈就有勇气了，谢谢您",
+            "妈妈笑起来最好看，要天天开心",
+            "愿妈妈永远健康，平安喜乐，不止生日",
+            "以后换阳阳来照顾您，我的超人妈妈👩‍👧",
+            "妈妈记得多休息，别总为我们操心",
+            "妈妈的怀抱是最温暖的港湾，阳阳永远爱您❤️",
+            "祝妈妈越来越年轻，心情像阳光一样灿烂",
+            "谢谢您包容阳阳的小脾气，爱您",
+            "新的一岁，愿妈妈事事顺心，天天快乐",
+            "有妈妈在，每天都是幸福的日子🐾",
+            "妈妈的唠叨都是爱，阳阳都懂",
+            "壮壮说：汪汪！（翻译：妈妈生日快乐）🐶",
+            "阳阳和壮壮永远是您的小棉袄和小跟班",
+            "愿妈妈如燕子般自由快乐🐦",
+            "妈妈的爱像燕子归巢，温暖又安心🐦"
+        ];
+
+        // 弹窗颜色（保持协调）
+        const popupColors = [
+            { bg: '#FFE6EA', text: '#6D4C41' },
+            { bg: '#FFE0B2', text: '#6D4C41' },
+            { bg: '#E8F5E9', text: '#2E7D32' },
+            { bg: '#E3F2FD', text: '#1565C0' },
+            { bg: '#F3E5F5', text: '#6A1B9A' }
+        ];
+
+        const btn = document.querySelector('.bless-btn');
+        const popupContainer = document.getElementById('popup-container');
+        const heartsContainer = document.getElementById('hearts-container');
+        const momContainer = document.getElementById('mom-container');
+        const popupSpacing = 30;
+        const totalPopups = 60;
+        const batchSize = 6;
+
+        // 母亲图片交互
+        momContainer.addEventListener('mouseenter', () => {
+            momContainer.classList.add('active');
+        });
+        momContainer.addEventListener('mouseleave', () => {
+            momContainer.classList.remove('active');
+        });
+        momContainer.addEventListener('click', () => {
+            momContainer.classList.toggle('active');
+        });
+
+        // 祝福按钮点击事件
+        btn.addEventListener('click', () => {
+            popupContainer.innerHTML = '';
+            for (let batch = 0; batch < totalPopups / batchSize; batch++) {
+                setTimeout(() => {
+                    createPopupBatch(batchSize);
+                }, batch * 80);
+            }
+            createFloatingHearts(25);
+        });
+
+        // 生成弹窗批次
+        function createPopupBatch(count) {
+            for (let i = 0; i < count; i++) {
+                let positionFound = false;
+                let attempts = 0;
+                let x, y;
+
+                while (!positionFound && attempts < 20) {
+                    attempts++;
+                    x = Math.floor(Math.random() * (window.innerWidth - 160)) + 20;
+                    y = Math.floor(Math.random() * (window.innerHeight - 70)) + 20;
+                    
+                    const overlaps = Array.from(popupContainer.children).some(popup => {
+                        const rect = popup.getBoundingClientRect();
+                        const dx = x - rect.left;
+                        const dy = y - rect.top;
+                        const distance = Math.sqrt(dx * dx + dy * dy);
+                        return distance < popupSpacing;
+                    });
+
+                    if (!overlaps) positionFound = true;
+                }
+
+                if (positionFound) {
+                    const randomBless = blessings[Math.floor(Math.random() * blessings.length)];
+                    const randomColor = popupColors[Math.floor(Math.random() * popupColors.length)];
+                    
+                    const popup = document.createElement('div');
+                    popup.className = 'bless-popup';
+                    popup.textContent = randomBless;
+                    popup.style.backgroundColor = randomColor.bg;
+                    popup.style.color = randomColor.text;
+                    popup.style.left = `${x}px`;
+                    popup.style.top = `${y}px`;
+                    popup.style.transform = `rotate(${Math.random() * 8 - 4}deg)`;
+                    
+                    popupContainer.appendChild(popup);
+                    
+                    setTimeout(() => popup.classList.add('show'), 10);
+                    
+                    setTimeout(() => {
+                        popup.classList.remove('show');
+                        setTimeout(() => {
+                            if (popupContainer.contains(popup)) {
+                                popupContainer.removeChild(popup);
+                            }
+                        }, 400);
+                    }, 3500);
+                }
+            }
+        }
+
+        // 生成漂浮爱心
+        function createFloatingHearts(count) {
+            for (let i = 0; i < count; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'floating-heart';
+                const heartSymbols = ['❤️', '💖', '💕', '💓', '💘'];
+                heart.textContent = heartSymbols[Math.floor(Math.random() * heartSymbols.length)];
+                heart.style.fontSize = `${Math.random() * 14 + 10}px`;
+                
+                const x = Math.random() * window.innerWidth;
+                const y = window.innerHeight * 0.8;
+                heart.style.left = `${x}px`;
+                heart.style.top = `${y}px`;
+                heart.style.animationDelay = `${i * 0.08}s`;
+                
+                heartsContainer.appendChild(heart);
+                
+                setTimeout(() => {
+                    if (heartsContainer.contains(heart)) {
+                        heartsContainer.removeChild(heart);
+                    }
+                }, 3000);
+            }
+        }
+    </script>
+</body>
+</html>
